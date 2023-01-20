@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="johnnycake">
+    <link rel="canonical" href="http://example.com/2023/01/19/malloc-lab/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <link rel="icon" type="image/png" href="/images/logo.JPG" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.JPG">
+    <link rel="shortcut icon" href="/images/logo.JPG">
+    
+    <title>
+        
+            Malloc Lab Report |
+        
+        Johnnycake&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/fonts.css">
+
+    
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.JPG","favicon":"/images/logo.JPG","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_image":{"light":"/images/hall_light.JPG","dark":"/images/hall_dark.JPG"},"title_color":{"light":"#323739","dark":"#ffffff"},"description":"Though, never tried a johnnycake..."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.5.2","friend_links":{"columns":2}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/css/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Johnnycake&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/fleurs03">GITHUB</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">Malloc Lab Report</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.JPG">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">johnnycake</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-19 23:00:03</span>
+        <span class="mobile">2023-01-19 23:00</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ics/">ics</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/homework/">homework</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>3.6k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>16 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>​		自己动手写一个C语言的动态内存分配器，设计 mm_init、mm_malloc、mm_free 和 mm_realloc 函数，以加深对动态内存分配的理解。</p>
+<h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>​		本实验的性能评价维度有空间利用率（U）和吞吐量（T），评分公式为：</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.909ex;" xmlns="http://www.w3.org/2000/svg" width="31.677ex" height="4.97ex" role="img" focusable="false" viewBox="0 -1353 14001.3 2196.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></g><g data-mml-node="mo" transform="translate(1028.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(2084.6,0)"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g><g data-mml-node="mi" transform="translate(2800.6,0)"><path data-c="1D448" d="M107 637Q73 637 71 641Q70 643 70 649Q70 673 81 682Q83 683 98 683Q139 681 234 681Q268 681 297 681T342 682T362 682Q378 682 378 672Q378 670 376 658Q371 641 366 638H364Q362 638 359 638T352 638T343 637T334 637Q295 636 284 634T266 623Q265 621 238 518T184 302T154 169Q152 155 152 140Q152 86 183 55T269 24Q336 24 403 69T501 205L552 406Q599 598 599 606Q599 633 535 637Q511 637 511 648Q511 650 513 660Q517 676 519 679T529 683Q532 683 561 682T645 680Q696 680 723 681T752 682Q767 682 767 672Q767 650 759 642Q756 637 737 637Q666 633 648 597Q646 592 598 404Q557 235 548 205Q515 105 433 42T263 -22Q171 -22 116 34T60 167V183Q60 201 115 421Q164 622 164 628Q164 635 107 637Z"></path></g><g data-mml-node="mo" transform="translate(3789.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mo" transform="translate(4790,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(5179,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(5901.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(6901.4,0)"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g><g data-mml-node="mo" transform="translate(7617.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mi" transform="translate(8006.4,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(8884.4,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(9229.4,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(9829.4,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(10218.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(10718.4,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mfrac" transform="translate(11163.1,0)"><g data-mml-node="mi" transform="translate(733.6,676)"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g data-mml-node="msub" transform="translate(220,-686)"><g data-mml-node="mi"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g data-mml-node="TeXAtom" transform="translate(617,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(298,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(643,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mi" transform="translate(1072,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g></g></g><rect width="1931.2" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(13334.3,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(13723.3,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g></g></g></svg></mjx-container></p>
+<p>​		其中 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="3.917ex" height="1.889ex" role="img" focusable="false" viewBox="0 -677 1731.2 834.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g data-mml-node="TeXAtom" transform="translate(617,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(298,0)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(643,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mi" transform="translate(1072,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g></g></g></g></g></svg></mjx-container> 是 libc malloc 的吞吐量，取 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.62ex" height="1.027ex" role="img" focusable="false" viewBox="0 -443 716 454"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></g></g></g></svg></mjx-container> 为 0.6，需要均衡地考虑空间利用率和吞吐量的优化。</p>
+<p>​		就吞吐量而言，我们需要关注的是每次执行 mm_malloc、mm_free 和 mm_realloc 的时间复杂度；对于空间利用率而言，我们需要做的是尽可能减少外部碎片（External Fragmentation）和内部碎片（Internal Fragmentation）的出现。</p>
+<p>​		本次实验中，为提高吞吐量，采用了显式空闲链表（Explicit Free List）；为提高空间利用率，采用了分离的空闲链表（Segregated Free List），即简单分离存储（Simple Segregated Storage）和分离适配（Segregated Fit）。</p>
+<h3 id="显式空闲链表："><a href="#显式空闲链表：" class="headerlink" title="显式空闲链表："></a>显式空闲链表：</h3><p>​		使用双向空闲链表的堆块的格式如下：</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/malloc-lab.assets/explicit-free-list.png" alt="explicit-free-list"></p>
+<p>​		显式空闲链表和隐式空闲链表在出现相邻的空闲块时的合并方式是类似的，分以下四种情况进行讨论：</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="/malloc-lab.assets/coalesce.png" alt="coalesce.png"></p>
+<p>​		使用双向链表而不是隐式空闲链表，可以使首次适配的分配时间从块总数的线性时间减少到了空闲块数量的线性时间。当然，这种方式也有缺点，即空闲块必须足够大以包含所有需要的指针，以及头部和脚部。这就导致了更大的最小块大小，也潜在地提高了内部碎片的程度。</p>
+<h3 id="分离的空闲链表"><a href="#分离的空闲链表" class="headerlink" title="分离的空闲链表"></a>分离的空闲链表</h3><p>​		一个使用单项空闲块链表的分配器需要于空闲块数量呈线性关系的时间来分配块。一种流行的减少分配时间的方法，通常称为分离存储（Segregated Storage），就是维护多个空闲链表，其中每个链表中的块有大致相等的大小。一般的思路是将所有可能的块大小分成一些等价类，也叫做大小类（Size Class）。有很多中方式来定义大小类，本次实验中采取的是根据 2 的幂来划分块大小，共设置 16 个大小类。</p>
+<p>​		分配器维护着一个空闲链表数组，每个大小类一个空闲链表，按照大小的升序排列。当分配器需要一个大小为 n 的块时，它就搜索相应的空闲链表。如果不能找到合适的块与之匹配，它就搜索下一个链表，以此类推。</p>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><blockquote>
+<p>为方便阅读，代码的具体解释说明以注释形式在代码段中呈现；而正文部分主要描述代码整体构建思路和一些不便以注释形式描述的问题。</p>
+</blockquote>
+<h3 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h3><p>​		首先是将一些指针算术封装在C的预处理器宏（#define）中，这显著降低了代码的复杂性，这部分主要参考了 <em>参考资料[1]</em> 上的示例代码：</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Basic constants and macros */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 16 bytes alignment */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ALIGNMENT 16</span></span><br><span class="line"><span class="comment">/* rounds up to the nearest multiple of ALIGNMENT */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ALIGN(size) (((size) + (ALIGNMENT - 1)) &amp; ~(ALIGNMENT - 1))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DSIZE 8 <span class="comment">/* Double word and header/footer size (bytes) */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> QSIZE 16 <span class="comment">/* Quad word size (bytes) */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INITCHUNKSIZE (1 &lt;&lt; 6) <span class="comment">/* Initial heap size (bytes) */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CHUNKSIZE (1 &lt;&lt; 12) <span class="comment">/* Extend heap by this amount (bytes) */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SFL_SIZE 16</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(x, y) ((x) &gt; (y) ? (x) : (y))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MIN(x, y) ((x) &lt; (y) ? (x) : (y))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pack a size and allocated fields from address p */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PACK(size, alloc) ((size) | (alloc))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Read the size and allocated fields from address p */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> GET(p) (*(unsigned long long *)(p))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PUT(p, val) (*(unsigned long long *)(p) = (val))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SET_PTR(p, ptr) (*(unsigned long long *)(p) = (unsigned long long)(ptr))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> GET_SIZE(p) (GET(p) &amp; ~0xF)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> GET_ALLOC(p) (GET(p) &amp; 0x1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Given block ptr bp, compute address of its header and footer */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HDRP(bp) ((char *)(bp)-DSIZE)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FTRP(bp) ((char *)(bp) + GET_SIZE(HDRP(bp)) - QSIZE)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Given block ptr bp, compute address of next and previous blocks */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NEXT_BLKP(bp) ((char *)(bp) + GET_SIZE((char *)(bp)-DSIZE))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PREV_BLKP(bp) ((char *)(bp)-GET_SIZE((char *)(bp)-QSIZE))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRED_PTR(bp) ((char *)(bp))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SUCC_PTR(bp) ((char *)(bp) + DSIZE)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRED(bp) (*(char **)(bp))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SUCC(bp) (*(char **)(SUCC_PTR(bp)))</span></span><br></pre></td></tr></table></figure></div>
+
+<p>​		唯一的全局标量变量，用于指向分离的空闲链表的头部：</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> **lists; <span class="comment">/* Pointer pointing to the head of segregated free lists */</span> </span><br></pre></td></tr></table></figure></div>
+
+<p>​		声明的一些辅助函数：</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Extend heap */</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">extend_heap</span><span class="params">(<span class="type">size_t</span> size)</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* Coalesce adjacent free blocks */</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">coalesce</span><span class="params">(<span class="type">void</span> *ptr)</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* Allocate a block of 'size' bytes at ptr, and separate if appropriate */</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">place</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Insert the free block into segregated free lists */</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">insert_node</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size)</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* Delete the free block from segregated free lists */</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">delete_node</span><span class="params">(<span class="type">void</span> *ptr)</span>; </span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="Main-Body"><a href="#Main-Body" class="headerlink" title="Main Body"></a>Main Body</h3><p>​		现在我们来关注 Lab 中要求完成的四个函数。</p>
+<h4 id="mm-init"><a href="#mm-init" class="headerlink" title="mm_init:"></a>mm_init:</h4><p>​		由于 Lab 不允许在程序中定义全局或静态的符合数据结构，因此将分离的空闲链表放置于堆的头部。并设置序言块和结尾块以标明的真实储存区间的开头和结尾，同时对堆进行初次的拓展。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">mm_init</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">/* Alloc space for the segregated free lists */</span></span><br><span class="line">    <span class="keyword">if</span>((lists = mem_sbrk(SFL_SIZE * QSIZE)) == (<span class="type">void</span> *)<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize the segregated free lists */</span></span><br><span class="line">    <span class="type">int</span> list_idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (list_idx &lt; SFL_SIZE)</span><br><span class="line">        lists[list_idx++] = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Initialize the heap */</span></span><br><span class="line">    <span class="type">char</span> *heap;</span><br><span class="line">    <span class="keyword">if</span> ((heap = mem_sbrk(<span class="number">4</span> * DSIZE)) == (<span class="type">void</span> *)<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    PUT(heap, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    PUT(heap + (<span class="number">1</span> * DSIZE), PACK(QSIZE, <span class="number">1</span>)); <span class="comment">/* Fill the preface block */</span></span><br><span class="line">    PUT(heap + (<span class="number">2</span> * DSIZE), PACK(QSIZE, <span class="number">1</span>)); <span class="comment">/* Fill the preface block */</span></span><br><span class="line">    PUT(heap + (<span class="number">3</span> * DSIZE), PACK(<span class="number">0</span>, <span class="number">1</span>));     <span class="comment">/* Fill the end block */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Extend initial heap */</span></span><br><span class="line">    <span class="keyword">if</span> (extend_heap(INITCHUNKSIZE) == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="mm-malloc"><a href="#mm-malloc" class="headerlink" title="mm_malloc:"></a>mm_malloc:</h4><p>​		采用的是分离适配法。首先进行内存对齐，再根据内存对齐后的大小在分离的空闲链表中寻找相应的链。由于在同一大小类的空闲链表中空闲快按照从小到大的顺序插入，因此找到的第一个便是最适配的。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *<span class="title function_">mm_malloc</span><span class="params">(<span class="type">size_t</span> size)</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">/* Ignore spuious requests */</span></span><br><span class="line">    <span class="keyword">if</span> (size == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Adjust block size to include overhead and alignment reqs */</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= QSIZE)</span><br><span class="line">        size = <span class="number">2</span> * QSIZE;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = QSIZE * ((size + (QSIZE) + (QSIZE - <span class="number">1</span>)) / QSIZE);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> list_idx = <span class="number">0</span>;</span><br><span class="line">    <span class="type">size_t</span> searchsize = size;</span><br><span class="line">    <span class="type">void</span> *ptr = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (list_idx &lt; SFL_SIZE)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* Search for the corresponding list */</span></span><br><span class="line">        <span class="keyword">if</span> (((searchsize &lt;= <span class="number">1</span>) &amp;&amp; (lists[list_idx] != <span class="literal">NULL</span>)))</span><br><span class="line">        {</span><br><span class="line">            ptr = lists[list_idx];</span><br><span class="line">            <span class="comment">/* Seach for a free block of appropriate size */</span></span><br><span class="line">            <span class="keyword">while</span> ((ptr != <span class="literal">NULL</span>) &amp;&amp; ((size &gt; GET_SIZE(HDRP(ptr)))))</span><br><span class="line">            {</span><br><span class="line">                ptr = PRED(ptr);</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">/* Found the corresponding free block */</span></span><br><span class="line">            <span class="keyword">if</span> (ptr != <span class="literal">NULL</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        searchsize &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        ++list_idx;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Failed to find an appropriate block */</span></span><br><span class="line">    <span class="keyword">if</span> (ptr == <span class="literal">NULL</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* Extend the heap */</span></span><br><span class="line">        <span class="keyword">if</span> ((ptr = extend_heap(MAX(size, CHUNKSIZE))) == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* allocate a block of 'size' bytes in the free block */</span></span><br><span class="line">    ptr = place(ptr, size);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ptr;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="mm-free"><a href="#mm-free" class="headerlink" title="mm_free:"></a>mm_free:</h4><p>​		释放一个块便是简单地将它的头部（header）和脚部（footer）标记为空闲，并进行可能的空闲块合并操作。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">mm_free</span><span class="params">(<span class="type">void</span> *ptr)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">size_t</span> size = GET_SIZE(HDRP(ptr));</span><br><span class="line"></span><br><span class="line">    PUT(HDRP(ptr), PACK(size, <span class="number">0</span>));</span><br><span class="line">    PUT(FTRP(ptr), PACK(size, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Insert free block into segregated free list */</span></span><br><span class="line">    insert_node(ptr, size);</span><br><span class="line">    <span class="comment">/* Coalesce if possible */</span></span><br><span class="line">    coalesce(ptr);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="mm-realloc"><a href="#mm-realloc" class="headerlink" title="mm_realloc:"></a>mm_realloc:</h4><p>​		首先进行内存对齐。若调整后的大小小于原先大小，直接返回原本的块*；否则为了减少外部碎片，我们应该尽可能地利用相邻的空闲块，因而检查下一个块是否为空闲块或堆的结尾块。若下一个块为空闲块或已经为堆的结尾块，如剩余的空闲空间仍然足够，直接进行重新分配，否则进行堆的拓展；否则，即没有可以连续利用的空闲块，且调整后的大小大于原块，则只能调用 mm_malloc 重新申请新的不连续的空闲块，并使用复制、释放原块。</p>
+<p>​		*: 尝试过若调整后的大小小于原先大小，对原本的块进行有必要的分割，但由于发现实际对于实验结果的提升并不大，遂舍弃。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *<span class="title function_">mm_realloc</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">void</span> *new_block = ptr;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (size == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Adjust block size to include overhead and alignment reqs */</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= QSIZE)</span><br><span class="line">        size = <span class="number">2</span> * QSIZE;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = QSIZE * ((size + (QSIZE) + (QSIZE - <span class="number">1</span>)) / QSIZE);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> remainder;</span><br><span class="line">    <span class="keyword">if</span> ((remainder = GET_SIZE(HDRP(ptr)) - size) &gt;= <span class="number">0</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* If the size is smaller than the original one,</span></span><br><span class="line"><span class="comment">            the original one is returned directly  */</span></span><br><span class="line">        <span class="keyword">return</span> ptr;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!GET_ALLOC(HDRP(NEXT_BLKP(ptr))) || !GET_SIZE(HDRP(NEXT_BLKP(ptr))))</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* Else use adjacent free block as much as possible to reduce external fragmentation */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* Still no enough free space */</span></span><br><span class="line">        <span class="keyword">if</span> ((remainder = GET_SIZE(HDRP(ptr)) + GET_SIZE(HDRP(NEXT_BLKP(ptr))) - size) &lt; <span class="number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">if</span> (extend_heap(MAX(-remainder, CHUNKSIZE)) == <span class="literal">NULL</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">            remainder += MAX(-remainder, CHUNKSIZE);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* Delete the free block just used and set the header and footer of the new block */</span></span><br><span class="line">        delete_node(NEXT_BLKP(ptr));</span><br><span class="line">        PUT(HDRP(ptr), PACK(size + remainder, <span class="number">1</span>));</span><br><span class="line">        PUT(FTRP(ptr), PACK(size + remainder, <span class="number">1</span>));</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* No continuous free blocks available */</span></span><br><span class="line">        new_block = mm_malloc(size);</span><br><span class="line">        <span class="comment">/* Copy and free the original block */</span></span><br><span class="line">        <span class="built_in">memcpy</span>(new_block, ptr, GET_SIZE(HDRP(ptr)));</span><br><span class="line">        mm_free(ptr);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new_block;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h3><p>​		最后是对辅助函数的说明。</p>
+<h4 id="extend-heap"><a href="#extend-heap" class="headerlink" title="extend_heap:"></a>extend_heap:</h4><p>​		为了避免进行过多的 mem_sbrk 调用，只在有必要时进行堆的扩展，且一次分配 CHUNKSIZE 大小（实验中定为 2^12^），再逐步利用新扩展的堆。调用 mem_sbrk 申请新的堆空间后，重新标记堆的结尾块，并将其拓展的堆空间加入分离的空闲链表中，且进行必要的空闲块合并操作。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">extend_heap</span><span class="params">(<span class="type">size_t</span> size)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">char</span> *bp;</span><br><span class="line">    <span class="comment">/* Memory alignment */</span></span><br><span class="line">    size = ALIGN(size);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((bp = mem_sbrk(size)) == (<span class="type">void</span> *)<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Set the header and footer of the block just extended */</span></span><br><span class="line">    PUT(HDRP(bp), PACK(size, <span class="number">0</span>));</span><br><span class="line">    PUT(FTRP(bp), PACK(size, <span class="number">0</span>));</span><br><span class="line">    <span class="comment">/* Set the end of heap */</span></span><br><span class="line">    PUT(HDRP(NEXT_BLKP(bp)), PACK(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Insert the free block into segregated free lists */</span></span><br><span class="line">    insert_node(bp, size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* The previous block may be free as well */</span></span><br><span class="line">    <span class="keyword">return</span> coalesce(bp);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="coalesce"><a href="#coalesce" class="headerlink" title="coalesce:"></a>coalesce:</h4><p>​		为了减少假碎片（False Fragmentation），需要将相邻的空闲块进行合并。由于合并策略，在释放当前块前必然不可能有相邻的空块（必然在前面的释放后已完成合并），因此仅需要检查前后是否有空块即可。按照前驱块和后继块的被分配状态分情况讨论，最后将合并的块插入分离的空闲链表中。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">coalesce</span><span class="params">(<span class="type">void</span> *ptr)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">_Bool</span> is_prev_alloc = GET_ALLOC(HDRP(PREV_BLKP(ptr)));</span><br><span class="line">    <span class="type">_Bool</span> is_next_alloc = GET_ALLOC(HDRP(NEXT_BLKP(ptr)));</span><br><span class="line">    <span class="type">size_t</span> size = GET_SIZE(HDRP(ptr));</span><br><span class="line">    <span class="comment">/* No possibility to have two adjacent free block  */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (is_prev_alloc &amp;&amp; is_next_alloc)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* Both the prev and next blocks are allocated */</span></span><br><span class="line">        <span class="keyword">return</span> ptr;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!is_prev_alloc &amp;&amp; is_next_alloc)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* The prev block is free while the next block is allocated */</span></span><br><span class="line">        delete_node(ptr);</span><br><span class="line">        delete_node(PREV_BLKP(ptr));</span><br><span class="line">        size += GET_SIZE(HDRP(PREV_BLKP(ptr)));</span><br><span class="line">        PUT(FTRP(ptr), PACK(size, <span class="number">0</span>));</span><br><span class="line">        PUT(HDRP(PREV_BLKP(ptr)), PACK(size, <span class="number">0</span>));</span><br><span class="line">        ptr = PREV_BLKP(ptr);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is_prev_alloc &amp;&amp; !is_next_alloc)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* The prev block is allocated while the next block is free */</span></span><br><span class="line">        delete_node(ptr);</span><br><span class="line">        delete_node(NEXT_BLKP(ptr));</span><br><span class="line">        size += GET_SIZE(HDRP(NEXT_BLKP(ptr)));</span><br><span class="line">        PUT(HDRP(ptr), PACK(size, <span class="number">0</span>));</span><br><span class="line">        PUT(FTRP(ptr), PACK(size, <span class="number">0</span>));</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* Both prev and next blocks are allocated */</span></span><br><span class="line">        delete_node(ptr);</span><br><span class="line">        delete_node(PREV_BLKP(ptr));</span><br><span class="line">        delete_node(NEXT_BLKP(ptr));</span><br><span class="line">        size += GET_SIZE(HDRP(PREV_BLKP(ptr))) + GET_SIZE(HDRP(NEXT_BLKP(ptr)));</span><br><span class="line">        PUT(HDRP(PREV_BLKP(ptr)), PACK(size, <span class="number">0</span>));</span><br><span class="line">        PUT(FTRP(NEXT_BLKP(ptr)), PACK(size, <span class="number">0</span>));</span><br><span class="line">        ptr = PREV_BLKP(ptr);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Insert coalesced blocks into segregated free lists */</span></span><br><span class="line">    insert_node(ptr, size);</span><br><span class="line">    <span class="keyword">return</span> ptr;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="place"><a href="#place" class="headerlink" title="place:"></a>place:</h4><p>​		在 ptr 所指向的空闲块中分配 size 大小的块。若剩下的空间大于等于(QSIZE &lt;&lt; 1)，则将其分离后插入分离的空闲链表中。由于若每次分配块的大小按照小、大交替的顺序进行，且释放时不是按这个顺序的话（如只释放掉所有的大块），会使得外部碎片非常严重（测试点 binary 即为如此）。因此本次实验中的策略是将较小的块放在某个连续的地方，将较大的块也放在某个连续的地方，可以有效减少外部碎片的产生。本次实验中的较大较小的衡量标准为“96”，这是一个魔法数字，是经过几次尝试后选取出来的表现较好的一个值。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> *<span class="title function_">place</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">size_t</span> ptr_size = GET_SIZE(HDRP(ptr));</span><br><span class="line">    <span class="comment">/* allocate size大小的空间后剩余的大小 */</span></span><br><span class="line">    <span class="comment">/* Size of remaining space  */</span></span><br><span class="line">    <span class="type">size_t</span> remainder = ptr_size - size;</span><br><span class="line"></span><br><span class="line">    delete_node(ptr);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (remainder &lt; (QSIZE &lt;&lt; <span class="number">1</span>))</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* If the remaining size is smaller than the minblock size,</span></span><br><span class="line"><span class="comment">            then the original block will not be separated */</span></span><br><span class="line">        PUT(HDRP(ptr), PACK(ptr_size, <span class="number">1</span>));</span><br><span class="line">        PUT(FTRP(ptr), PACK(ptr_size, <span class="number">1</span>));</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (size &lt; <span class="number">96</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* 96 is a magic number which tested best */</span></span><br><span class="line">        <span class="comment">/* Put blocks of small size together to reduce external fragmentation */</span></span><br><span class="line">        PUT(HDRP(ptr), PACK(size, <span class="number">1</span>));</span><br><span class="line">        PUT(FTRP(ptr), PACK(size, <span class="number">1</span>));</span><br><span class="line">        PUT(HDRP(NEXT_BLKP(ptr)), PACK(remainder, <span class="number">0</span>));</span><br><span class="line">        PUT(FTRP(NEXT_BLKP(ptr)), PACK(remainder, <span class="number">0</span>));</span><br><span class="line">        insert_node(NEXT_BLKP(ptr), remainder);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">/* alloc space for blocks of large size */</span></span><br><span class="line">        PUT(HDRP(ptr), PACK(remainder, <span class="number">0</span>));</span><br><span class="line">        PUT(FTRP(ptr), PACK(remainder, <span class="number">0</span>));</span><br><span class="line">        PUT(HDRP(NEXT_BLKP(ptr)), PACK(size, <span class="number">1</span>));</span><br><span class="line">        PUT(FTRP(NEXT_BLKP(ptr)), PACK(size, <span class="number">1</span>));</span><br><span class="line">        insert_node(ptr, remainder);</span><br><span class="line">        <span class="keyword">return</span> NEXT_BLKP(ptr);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ptr;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="insert-node"><a href="#insert-node" class="headerlink" title="insert_node:"></a>insert_node:</h4><p>​		将 ptr 对应的空闲块插入分离的空闲链表中。先通过空闲块的大小找到对应的链，再在该链中继续寻找对应的插入位置，以保证同一类大小的链中块从小到大排列的顺序。找到后根据块的插入位置分别进行讨论即可。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">insert_node</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> list_idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Search for the corresponding list by the size of the block */</span></span><br><span class="line">    <span class="keyword">while</span> ((list_idx &lt; SFL_SIZE - <span class="number">1</span>) &amp;&amp; (size &gt; <span class="number">1</span>))</span><br><span class="line">    {</span><br><span class="line">        size &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        ++list_idx;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Found the corresponding list and search for the corresponding place in list */</span></span><br><span class="line">    <span class="type">void</span> *search_ptr = lists[list_idx];</span><br><span class="line">    <span class="type">void</span> *insert_ptr = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((search_ptr != <span class="literal">NULL</span>) &amp;&amp; (size &gt; GET_SIZE(HDRP(search_ptr))))</span><br><span class="line">    {</span><br><span class="line">        insert_ptr = search_ptr;</span><br><span class="line">        search_ptr = PRED(search_ptr);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (search_ptr != <span class="literal">NULL</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (insert_ptr != <span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 1. -&gt;xx-&gt;insert-&gt;xx insert between */</span></span><br><span class="line">            SET_PTR(PRED_PTR(ptr), search_ptr);</span><br><span class="line">            SET_PTR(SUCC_PTR(search_ptr), ptr);</span><br><span class="line">            SET_PTR(SUCC_PTR(ptr), insert_ptr);</span><br><span class="line">            SET_PTR(PRED_PTR(insert_ptr), ptr);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 2. [list_idx]-&gt;insert-&gt;xx insert at the beginning */</span></span><br><span class="line">            SET_PTR(PRED_PTR(ptr), search_ptr);</span><br><span class="line">            SET_PTR(SUCC_PTR(search_ptr), ptr);</span><br><span class="line">            SET_PTR(SUCC_PTR(ptr), <span class="literal">NULL</span>);</span><br><span class="line">            lists[list_idx] = ptr;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (insert_ptr != <span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 3. -&gt;xxxx-&gt;insert insert at the end */</span></span><br><span class="line">            SET_PTR(PRED_PTR(ptr), <span class="literal">NULL</span>);</span><br><span class="line">            SET_PTR(SUCC_PTR(ptr), insert_ptr);</span><br><span class="line">            SET_PTR(PRED_PTR(insert_ptr), ptr);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 4. [list_idx]-&gt;insert first insertion */</span></span><br><span class="line">            SET_PTR(PRED_PTR(ptr), <span class="literal">NULL</span>);</span><br><span class="line">            SET_PTR(SUCC_PTR(ptr), <span class="literal">NULL</span>);</span><br><span class="line">            lists[list_idx] = ptr;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="delete-node"><a href="#delete-node" class="headerlink" title="delete_node:"></a>delete_node:</h3><p>​		将 ptr 对应的空闲块从分离的空闲链表中删除。先通过空闲块的大小找到对应的链，再根据块的位置分情况讨论即可。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">delete_node</span><span class="params">(<span class="type">void</span> *ptr)</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> list_idx = <span class="number">0</span>;</span><br><span class="line">    <span class="type">size_t</span> size = GET_SIZE(HDRP(ptr));</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Search for corresponding list by size */</span></span><br><span class="line">    <span class="keyword">while</span> ((list_idx &lt; SFL_SIZE - <span class="number">1</span>) &amp;&amp; (size &gt; <span class="number">1</span>))</span><br><span class="line">    {</span><br><span class="line">        size &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        ++list_idx;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (PRED(ptr) != <span class="literal">NULL</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (SUCC(ptr) != <span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 1. xxx-&gt; ptr -&gt; xxx */</span></span><br><span class="line">            SET_PTR(SUCC_PTR(PRED(ptr)), SUCC(ptr));</span><br><span class="line">            SET_PTR(PRED_PTR(SUCC(ptr)), PRED(ptr));</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 2. [list_idx] -&gt; ptr -&gt; xxx */</span></span><br><span class="line">            SET_PTR(SUCC_PTR(PRED(ptr)), <span class="literal">NULL</span>);</span><br><span class="line">            lists[list_idx] = PRED(ptr);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (SUCC(ptr) != <span class="literal">NULL</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 3. [list_idx] -&gt; xxx -&gt; ptr */</span></span><br><span class="line">            SET_PTR(PRED_PTR(SUCC(ptr)), <span class="literal">NULL</span>);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="comment">/* 4. [list_idx] -&gt; ptr */</span></span><br><span class="line">            lists[list_idx] = <span class="literal">NULL</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img lazyload="" src="/images/loading.svg" data-src="/malloc-lab.assets/result.png" alt="result"></p>
+<p>​		注：测试运行于课程配置的 Linux x86_64服务器上。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>BRYANT R E, O&amp;APOS;HALLARON D R. Computer systems : a programmer’s perspective /[M]. 3rd ed.. 北京: Mechanical Industry Press, 2017.</li>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.cs.cmu.edu/afs/cs/academic/class/15213-f10/www/labs/malloclab-writeup.pdf">malloclab-writeup.pdf (cmu.edu) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ol>
+<h2 id="遇到的困难-amp-心得"><a href="#遇到的困难-amp-心得" class="headerlink" title="遇到的困难&心得"></a>遇到的困难&amp;心得</h2><p>​		本次 Lab 让我对动态内存分配有了更深的理解，认识到平时视为平常之至的一个调用背后竟有如此多的学问。同时由于动态内存分配器是较难进行跟踪和代码查错工作的，曾在完成过程中多次遇到 Segmentation fault (core dumped)，因此在完成本次 Lab 后我的代码编写能力和查错能力都有了很大的提高。</p>
+<p>​		实验过程中我一度卡在两个 binary 测试点上，苦于 util 提不上去。后面联想到分离的空闲链表的原理，发现对分配块亦可以采用分离的做法，因此有了 place 函数处描述的思路：将较小的块放在某个连续的地方，将较大的块也放在某个连续的地方。这让我学会了学以致用，思路得到了极大的拓展。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Malloc Lab Report</li>
+        <li>Post author：johnnycake</li>
+        <li>Create time：2023-01-19 23:00:03</li>
+        <li>
+            Post link：https://fleurs03.github.io/2023/01/19/malloc-lab/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ics/">#ics</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/homework/">#homework</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/01/19/marxist-reading-notes/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">《论犹太人问题》读书笔记</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/01/19/attack-lab/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Attack Lab Report</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><span class="nav-text">实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="nav-text">实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8%EF%BC%9A"><span class="nav-text">显式空闲链表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%A6%BB%E7%9A%84%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8"><span class="nav-text">分离的空闲链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preface"><span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-Body"><span class="nav-text">Main Body</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mm-init"><span class="nav-text">mm_init:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mm-malloc"><span class="nav-text">mm_malloc:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mm-free"><span class="nav-text">mm_free:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mm-realloc"><span class="nav-text">mm_realloc:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Postscript"><span class="nav-text">Postscript</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#extend-heap"><span class="nav-text">extend_heap:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#coalesce"><span class="nav-text">coalesce:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#place"><span class="nav-text">place:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-node"><span class="nav-text">insert_node:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-node"><span class="nav-text">delete_node:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9B%B0%E9%9A%BE-amp-%E5%BF%83%E5%BE%97"><span class="nav-text">遇到的困难&amp;心得</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">johnnycake. All Rights Reserved.</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalviews&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.5.2</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2023/1/20 00:00:00
+        </div>
+        
+        
+
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
